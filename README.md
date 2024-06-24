@@ -35,7 +35,7 @@ Enter certificate to add to trusted keystore or 'g to quit.【1】
  
 尝试3--不校验了，直接全部信任
 原代码
-=====================================================
+ 
 URL console = new URL(url);
 HttpURLConnection conn = (HttpURLConnection) console.openConnection();
 if (conn instanceof HttpsURLConnection)  {
@@ -49,9 +49,9 @@ InputStream inputStream = conn.getInputStream();
 PdfReader pdfReader = new PdfReader(inputStream);
 inputStream.close();
 conn.disconnect();
-=====================================================
+ 
 现代码
-=====================================================
+ 
 private static class TrustAnyTrustManager implements X509TrustManager {
     //这个方法用于验证客户端的证书。在这里，方法体为空，表示不对客户端提供的证书进行任何验证。
     public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
@@ -70,4 +70,4 @@ private static class TrustAnyHostnameVerifier implements HostnameVerifier {
         return true;
     }
 }
-=====================================================
+ 
